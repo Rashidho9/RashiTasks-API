@@ -15,7 +15,7 @@ public class Task {
     public Task(Long id, String titel, boolean erledigt) {
     	this.id = id;
     	this.titel = titel;
-    	this erledigt = erledigt;
+    	this.erledigt = erledigt;
     }
     
     public Long getId() { return id; }
