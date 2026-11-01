@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class TaskController {
@@ -22,6 +24,15 @@ public class TaskController {
     @GetMapping("/tasks")
     public List<Task> alleTasks(){
     	return tasks;
+    }
+    
+    // POST /tasks -> neue Aufgabe anlegen
+    // @RequestBody: Spring wandelt das gesendete JSON in ein Task-Objekt um
+    @PostMapping("/tasks")
+    public Task neueTask(@RequestBody Task task) {
+    	task.setId((long)tasks.size() + 1); // nächste freie Nummer
+        tasks.add(task);
+		return task;// die neue Aufgabe zurückgeben
     }
     
 }
